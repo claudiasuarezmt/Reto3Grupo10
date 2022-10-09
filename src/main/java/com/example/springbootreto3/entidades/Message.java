@@ -24,3 +24,4 @@ public class Message implements Serializable {
 
 
 }
+// Messagetext  lib - target - capacity - category - client
