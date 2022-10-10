@@ -24,13 +24,14 @@ public class Library implements Serializable {
     @JsonIgnoreProperties("libs")
     private Category category;
 
-    @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "lib")
-    @JsonIgnoreProperties({"client","lib"})
-    private List<Message>messages;
 
-    @OneToMany(cascade ={CascadeType.PERSIST},mappedBy = "lib")
-    @JsonIgnoreProperties({"client","lib"})
-    private List<Reservation>reservations;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","messages"})
+    public List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -95,5 +96,4 @@ public class Library implements Serializable {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
 }
