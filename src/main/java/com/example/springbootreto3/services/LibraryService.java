@@ -14,7 +14,7 @@ public class LibraryService {
     private LibraryRepository libraryRepository;
 
     public List<Library> getAll(){
-        return libraryRepository.getAll();
+        return (List<Library>)libraryRepository.getAll();
     }
     public Library save(Library lb){
 
