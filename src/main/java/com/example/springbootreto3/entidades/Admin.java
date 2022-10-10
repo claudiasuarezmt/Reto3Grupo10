@@ -13,6 +13,9 @@ public class Admin implements Serializable {
     private String name;
     private String password;
 
+    public Admin() {
+    }
+
     public Integer getId() {
         return id;
     }
