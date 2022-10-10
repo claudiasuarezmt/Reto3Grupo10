@@ -18,7 +18,6 @@ public class Library implements Serializable {
     private String target;
     private Integer capacity;
     private String description;
-
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("libs")
