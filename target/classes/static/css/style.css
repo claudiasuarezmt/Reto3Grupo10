@@ -1,0 +1,141 @@
+label {
+    display: block;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    height: 24px;
+    margin: 0 10px 0 0;
+    padding: 3px 7px;
+    width: 150px;
+}
+
+.input {
+    border: 1px solid #CCCCCC;
+    height: 16px;
+    padding: 7px;
+    width: 435px;
+}
+
+.select {
+    background-color: #f3f3f3;
+    border: 1px solid #CCCCCC;
+    height: 32px;
+    padding: 4px;
+    width: 451px;
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: #CCCCCC;
+}
+
+
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+    --sm: 14px;
+    --md: 16px;
+    --lg: 18px;
+}
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--very-light-pink);
+}
+.menu {
+    display: none;
+}
+.logo {
+    width: 100px;
+}
+.navbar-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+.navbar-left {
+    display: flex;
+}
+.navbar-left ul {
+    margin-left: 12px;
+}
+.navbar-left ul li a{
+    text-decoration: none;
+    color: var(--very-light-pink);
+    border: 1px solid var(--white);
+    padding: 8px;
+    border-radius: 8px;
+}
+.navbar-left ul li a:hover,
+.navbar-right ul li a:hover {
+    border: 1px solid #DDEBF7;
+    color: #3a80dc;
+}
+
+.contenido{
+    width: 52%;
+    margin: 0 auto;
+
+}
+.botones{
+    width: 52%;
+    margin: 0 auto;
+    padding-left: 40%;
+}
+.tabla{
+    margin: 0 auto;
+    border-collapse: separate;
+
+}
+td, th {
+    border: solid 1px whitesmoke;
+}
+tr td, th {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+th:first-child {
+    border-top-left-radius: 10px;
+    align-items: center;
+
+}
+th:last-child {
+    border-top-right-radius: 10px;
+    align-items: center;
+}
+tr:first-child{
+    background-color: #3a80dc;
+    color: #f7f7f7;
+}
+tr{
+    background-color:#DDEBF7;
+    text-align: center;
+}
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+    align-items: center;
+}
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+    align-items: center;
+
+}
+.formulario{
+    width: 100%;
+    margin: 30%;
+    margin-top: 100px;
+}
+
