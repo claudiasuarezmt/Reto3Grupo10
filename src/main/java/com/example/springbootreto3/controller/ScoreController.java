@@ -3,6 +3,7 @@ package com.example.springbootreto3.controller;
 import com.example.springbootreto3.entidades.Score;
 import com.example.springbootreto3.services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class ScoreController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score sc){
         return scoreService.save(sc);
     }

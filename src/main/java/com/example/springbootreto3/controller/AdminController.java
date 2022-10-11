@@ -4,6 +4,7 @@ import com.example.springbootreto3.entidades.Admin;
 import com.example.springbootreto3.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class AdminController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Admin save(@RequestBody Admin ad){
         return adminService.save(ad);
     }
