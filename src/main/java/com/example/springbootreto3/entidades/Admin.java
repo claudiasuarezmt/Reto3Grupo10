@@ -13,6 +13,16 @@ public class Admin implements Serializable {
     private String name;
     private String password;
 
+    public Admin() {
+    }
+
+    public Admin(Integer id, String email, String name, String password) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

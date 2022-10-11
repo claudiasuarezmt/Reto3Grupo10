@@ -26,4 +26,6 @@ public class AdminRepository {
          adminCRUDRepository.delete(ad);
     }
 
+    public AdminRepository() {
+    }
 }

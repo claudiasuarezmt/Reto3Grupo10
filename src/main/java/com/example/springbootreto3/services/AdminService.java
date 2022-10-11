@@ -23,4 +23,7 @@ public class AdminService {
         return adminRepository.save(ad);
     }
 
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+    }
 }
