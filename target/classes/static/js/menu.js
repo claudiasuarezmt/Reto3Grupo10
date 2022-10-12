@@ -18,6 +18,15 @@ let menu = '<div class="navbar-left">\n' +
         menu=menu+'<li><a href="admin.html">'
     }
     menu=menu+'Administradores </a></li>';
+
+
+    if(item==="client.html"){
+        menu= menu+'<li><a href="client.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="client.html">';
+    }
+
+    menu=menu+'Clientes </a></li>';
     menu=menu+'</ul></div>'
     $("#menu").html(menu);
 
