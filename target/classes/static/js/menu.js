@@ -13,9 +13,9 @@ let menu = '<div class="navbar-left">\n' +
     }
     menu=menu+'Inicio </a></li>';
     if(item==="admin.html"){
-        menu=menu+'<li><a href="index.html" style="color: black;">'
+        menu=menu+'<li><a href="admin.html" style="color: black;">'
     }else{
-        menu=menu+'<li><a href="index.html">'
+        menu=menu+'<li><a href="admin.html">'
     }
     menu=menu+'Administradores </a></li>';
     menu=menu+'</ul></div>'
