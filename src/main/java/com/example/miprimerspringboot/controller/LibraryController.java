@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/Library")
+@RequestMapping("/api/Lib")
 public class LibraryController {
     @Autowired
     private LibraryService libraryService;
