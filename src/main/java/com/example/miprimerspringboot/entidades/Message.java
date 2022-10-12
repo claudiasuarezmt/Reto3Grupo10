@@ -54,6 +54,8 @@ public class Message implements Serializable {
 
     public Client getClient() {
         return client;
+    }{
+
     }
 
     public void setClient(Client client) {
