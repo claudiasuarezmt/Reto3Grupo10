@@ -28,7 +28,7 @@ function pintarCategory(items) {
     if(items !== undefined){
         for (i = 0; i < items.length; i++) {
             myTableCategory += "<tr>";
-            myTableCategory += "<td style=width:150px>" + items[i].idCategory + "</td>"
+            myTableCategory += "<td style=width:150px>" + items[i].id + "</td>"
             myTableCategory += "<td style=width:150px>" + items[i].name + "</td>"
             myTableCategory += "<td style=width:150px>" + items[i].description + "</td>"
             myTableCategory += "<td><button onclick=getDetailCategory(" + items[i].idCategory + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
@@ -52,7 +52,7 @@ function habilitaDatosCategory(nuTipo) {
     }
 
     campos += "<label width: 180px;>Nombre: </label><input type=text id=nameCategory class=input><br>";
-    campos += "<label width: 180px;>Correo: </label><input type=text id=descCategory class=input><br>";
+    campos += "<label width: 180px;>Descripción: </label><input type=text id=descCategory class=input><br>";
 
 
     //si el tipo es 1 es para crearlo y si el tipoo es 2 para actaulizarlo
@@ -75,7 +75,7 @@ function getCategoryInfo() {
     let category = {
         id: idCate,
         name: nameCate,
-        descriptoin: descCateg
+        description: descCateg
     };
 
     return category;
@@ -135,7 +135,7 @@ function updateCategory() {
 
     $.ajax({
         url: myURLCategory+'/save',
-        type: 'POST',
+        type: 'PUT',
         contentType: 'application/json',
         data: dataToSend,
         success: function (category) {

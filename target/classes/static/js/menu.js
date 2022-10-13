@@ -27,6 +27,14 @@ let menu = '<div class="navbar-left">\n' +
     }
 
     menu=menu+'Clientes </a></li>';
+
+    if(item==="category.html"){
+        menu= menu+'<li><a href="category.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="category.html">';
+    }
+
+    menu=menu+'Categorias </a></li>';
     menu=menu+'</ul></div>'
     $("#menu").html(menu);
 
