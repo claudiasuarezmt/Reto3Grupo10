@@ -24,15 +24,36 @@ function getCategory() {
 //pinta la tabla en pantalla con los datos de la categoria
 function pintarCategory(items) {
     let myTableCategory = "<table cellpadding=0 cellspacing=0 class=tabla >";
-    myTableCategory += "<tr><td style=width:150px>Id Categoría</td><td style=width:150px>Nombre</td><td style=width:150px>Descripcion</td><td style=width:150px>Acciones</td></tr>";
+    myTableCategory += "<tr><td style=width:150px>Nombre</td><td style=width:150px>Descripcion</td><td  style=width:150px>Bibliotecas</td><td style=width:150px>Acciones</td></tr>";
     if(items !== undefined){
         for (i = 0; i < items.length; i++) {
+
+
+
             myTableCategory += "<tr>";
-            myTableCategory += "<td style=width:150px>" + items[i].id + "</td>"
             myTableCategory += "<td style=width:150px>" + items[i].name + "</td>"
             myTableCategory += "<td style=width:150px>" + items[i].description + "</td>"
-            myTableCategory += "<td><button onclick=getDetailCategory(" + items[i].idCategory + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
-            myTableCategory += "<button onclick=deleteCategory(" + items[i].idCategory + ") ><img src=/icons/delete2.png  alt=Eliminar height=20></button></td>";
+
+
+            if(items[i].libs.length !== 0){
+                myTableCategory+='<td><table class="nulo">'
+                for(j=0; j < items[i].libs.length; j++){
+                    myTableCategory += "<tr style='background-color:#DDEBF7; color: black; '><td style=width:70px>" + items[i].libs[j].name + "</td>"
+                    myTableCategory += "<td style=width:70px>" + items[i].libs[j].target + "</td>"
+                    myTableCategory += "<td style=width:70px>" + items[i].libs[j].capacity + "</td>"
+                    myTableCategory += "<td style=width:70px>" + items[i].libs[j].description + "</td></tr>"
+                }
+                myTableCategory+='</table></td>'
+            }else{
+                myTableCategory += "<td style=width:280px></td>"
+
+
+
+
+            }
+
+            myTableCategory += "<td style=width:150px>"+"<button onclick=getDetailCategory(" + items[i].id + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
+            myTableCategory += "<button onclick=deleteCategory(" + items[i].id + ") ><img src=/icons/delete2.png  alt=Eliminar height=20></button></td>";
             myTableCategory += "</tr>";
         }
     }
@@ -42,27 +63,27 @@ function pintarCategory(items) {
 }
 
 function habilitaDatosCategory(nuTipo) {
-    //Esta funcion muestra en pantalla los datos de la categoria para crear o actualizar
-    $("#camposCategory").empty();
-    let campos = "<h2>Ingrese la informacion de la categoría</h2>";
+        //Esta funcion muestra en pantalla los datos de la categoria para crear o actualizar
+        $("#camposCategory").empty();
+        let campos = "<h2>Ingrese la informacion de la categoría</h2>";
 
-    if (nuTipo == 2) {
-        campos += "<label width: 180px;>Codigo: </label>"
-        campos += "<input type=number id=idCategory disabled class=input><br>";
-    }
+        if (nuTipo == 2) {
+            campos += "<label width: 180px;>Codigo: </label>"
+            campos += "<input type=number id=idCategory disabled class=input><br>";
+        }
 
-    campos += "<label width: 180px;>Nombre: </label><input type=text id=nameCategory class=input><br>";
-    campos += "<label width: 180px;>Descripción: </label><input type=text id=descCategory class=input><br>";
+        campos += "<label width: 180px;>Nombre: </label><input type=text id=nameCategory class=input><br>";
+        campos += "<label width: 180px;>Descripción: </label><input type=text id=descCategory class=input><br>";
 
 
-    //si el tipo es 1 es para crearlo y si el tipoo es 2 para actaulizarlo
-    if (nuTipo == 1) {
-        campos += "<button onclick=saveCategory() >Guardar Categoría</button>";
-    } else {
-        campos += "<button onclick=updateCategory() >Guardar Categoría</button>";
-    }
-    campos += "</div>";
-    $("#camposCategory").append(campos);
+        //si el tipo es 1 es para crearlo y si el tipoo es 2 para actaulizarlo
+        if (nuTipo == 1) {
+            campos += "<button onclick=saveCategory() >Guardar Categoría</button>";
+        } else {
+            campos += "<button onclick=updateCategory() >Guardar Categoría</button>";
+        }
+        campos += "</div>";
+        $("#camposCategory").append(campos);
 }
 
 //obtiene los datos digitados en el formulario de category
