@@ -63,27 +63,27 @@ function pintarCategory(items) {
 }
 
 function habilitaDatosCategory(nuTipo) {
-    //Esta funcion muestra en pantalla los datos de la categoria para crear o actualizar
-    $("#camposCategory").empty();
-    let campos = "<h2>Ingrese la informacion de la categoría</h2>";
+        //Esta funcion muestra en pantalla los datos de la categoria para crear o actualizar
+        $("#camposCategory").empty();
+        let campos = "<h2>Ingrese la informacion de la categoría</h2>";
 
-    if (nuTipo == 2) {
-        campos += "<label width: 180px;>Codigo: </label>"
-        campos += "<input type=number id=idCategory disabled class=input><br>";
-    }
+        if (nuTipo == 2) {
+            campos += "<label width: 180px;>Codigo: </label>"
+            campos += "<input type=number id=idCategory disabled class=input><br>";
+        }
 
-    campos += "<label width: 180px;>Nombre: </label><input type=text id=nameCategory class=input><br>";
-    campos += "<label width: 180px;>Descripción: </label><input type=text id=descCategory class=input><br>";
+        campos += "<label width: 180px;>Nombre: </label><input type=text id=nameCategory class=input><br>";
+        campos += "<label width: 180px;>Descripción: </label><input type=text id=descCategory class=input><br>";
 
 
-    //si el tipo es 1 es para crearlo y si el tipoo es 2 para actaulizarlo
-    if (nuTipo == 1) {
-        campos += "<button onclick=saveCategory() >Guardar Categoría</button>";
-    } else {
-        campos += "<button onclick=updateCategory() >Guardar Categoría</button>";
-    }
-    campos += "</div>";
-    $("#camposCategory").append(campos);
+        //si el tipo es 1 es para crearlo y si el tipoo es 2 para actaulizarlo
+        if (nuTipo == 1) {
+            campos += "<button onclick=saveCategory() >Guardar Categoría</button>";
+        } else {
+            campos += "<button onclick=updateCategory() >Guardar Categoría</button>";
+        }
+        campos += "</div>";
+        $("#camposCategory").append(campos);
 }
 
 //obtiene los datos digitados en el formulario de category
