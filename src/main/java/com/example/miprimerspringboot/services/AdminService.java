@@ -26,4 +26,13 @@ public class AdminService {
     public AdminService(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
     }
+
+    public boolean deleteAdmin(int id) {
+        Boolean d=getById(id).map(admin ->{
+            adminRepository.delete(admin);
+            return true;
+        }).orElse(false);
+          return d;
+
+    }
 }

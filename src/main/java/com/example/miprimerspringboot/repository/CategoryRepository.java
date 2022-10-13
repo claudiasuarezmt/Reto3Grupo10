@@ -25,4 +25,9 @@ public class CategoryRepository {
         return categoryCRUDRepository.findById(id);
     }
 
+    public void delete(Category category) {
+        categoryCRUDRepository.delete(category);
+    }
+
+   
 }

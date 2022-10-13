@@ -2,6 +2,7 @@ package com.example.miprimerspringboot.controller;
 
 import com.example.miprimerspringboot.entidades.Admin;
 import com.example.miprimerspringboot.services.AdminService;
+import com.example.miprimerspringboot.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.http.HttpStatus;
@@ -29,5 +30,11 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public Admin save(@RequestBody Admin ad){
         return adminService.save(ad);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public  boolean delete(@PathVariable("id")int id){
+        return adminService.deleteAdmin(id);
     }
 }

@@ -28,4 +28,5 @@ public class AdminRepository {
 
     public AdminRepository() {
     }
+
 }

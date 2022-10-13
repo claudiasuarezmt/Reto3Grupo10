@@ -15,6 +15,8 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+
+
     public List<Category> getAll(){
         return categoryRepository.getAll();
     }
@@ -26,5 +28,16 @@ public class CategoryService {
         return categoryRepository.getById(id);
     }
 
+
+    public boolean deleteCategory(int id) {
+        boolean flag=false;
+        Optional<Category> d= categoryRepository.getCategory(id);
+        if (d.isPresent()){
+            categoryRepository.delete(d.get());
+            flag=true;
+        }
+        return flag;
+
+    }
 
 }
