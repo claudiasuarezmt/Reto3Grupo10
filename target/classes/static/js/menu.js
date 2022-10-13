@@ -35,6 +35,14 @@ let menu = '<div class="navbar-left">\n' +
     }
 
     menu=menu+'Categorias </a></li>';
+
+    if(item==="message.html"){
+        menu= menu+'<li><a href="message.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="message.html">';
+    }
+
+    menu=menu+'Mensajes </a></li>';
     menu=menu+'</ul></div>'
     $("#menu").html(menu);
 
