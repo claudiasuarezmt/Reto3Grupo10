@@ -34,7 +34,8 @@ function pintarCliente(items) {
             myTableCliente += "<td style=width:150px>" + items[i].name + "</td>"
             myTableCliente += "<td style=width:150px>" + items[i].email + "</td>"
             myTableCliente += "<td style=width:150px>" + items[i].age + "</td>"
-            myTableCliente += "<td><button onclick=getDetailClient(" + items[i].idClient + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button></td>";
+            myTableCliente += "<td><button onclick=getDetailClient(" + items[i].idClient + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
+            myTableCliente += "<button onclick=deleteClient(" + items[i].idClient + ") ><img src=/icons/delete2.png  alt=Eliminar height=20></button></td>";
             myTableCliente += "</tr>";
         }
     }
@@ -128,8 +129,8 @@ function updateClient() {
     console.log(dataToSend);
 
     $.ajax({
-        url: myURLCliente+'/save',
-        type: 'POST',
+        url: myURLCliente+'/update',
+        type: 'PUT',
         contentType: 'application/json',
         data: dataToSend,
         success: function (clients) {
@@ -164,6 +165,23 @@ function getDetailClient(idClient) {
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema', status.data);
+        }
+    });
+}
+function deleteClient(idClient) {
+
+    let data = { id: idClient };
+    let dataToSend = JSON.stringify(data);
+    $.ajax({
+        url: myURLCliente+'/delete',
+        type: 'DELETE',
+        contentType: 'application/json',
+        data: dataToSend,
+        success: function (client) {
+            getClients();
+        },
+        error: function (xhr, status) {
+            alert('ha sucedido un problema');
         }
     });
 }
