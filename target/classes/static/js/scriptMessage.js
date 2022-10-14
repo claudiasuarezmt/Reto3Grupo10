@@ -80,6 +80,14 @@ function habilitaDatosMensaje(nuTipo) {
         campos += "<input type=number id=idMessage disabled class=input><br>";
     }
     campos += "<label width: 180px;>Mensaje: </label><input type=text id=Messagetext class=input><br>";
+    campos += "<div className=dropdown>" +
+             "<button className=btn btn-secondary dropdown-toggle type=button id=dropdownMenuButton data-toggle=dropdown aria-haspopup=true aria-expanded=false>Dropdown button </button>"+
+             "<div className=dropdown-menu aria-labelledby=dropdownMenuButton>"+
+            "<a className=dropdown-item >Action</a>"+
+            "<a className=dropdown-item >Another action</a>"+
+            "<a className=dropdown-item >Something else here</a></div></div>"
+
+
     if (nuTipo == 1) {
         campos += "<button onclick=saveMessage() >Guardar Mensaje</button>";
     } else {
