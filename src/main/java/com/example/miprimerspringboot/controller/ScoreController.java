@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.controller;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Score;
 import com.example.miprimerspringboot.services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,14 @@ public class ScoreController {
     @ResponseStatus(HttpStatus.CREATED)
     public Score save(@RequestBody Score sc){
         return scoreService.save(sc);
+    }
+    @PutMapping("/update")
+    public Score update(@RequestBody Score u){
+        return scoreService.update(u);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return scoreService.delete(id);
     }
 
 }

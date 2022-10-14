@@ -135,7 +135,7 @@ function updateCategory() {
 
     $.ajax({
         url: myURLCategory+'/save',
-        type: 'POST',
+        type: 'PUT',
         contentType: 'application/json',
         data: dataToSend,
         success: function (category) {

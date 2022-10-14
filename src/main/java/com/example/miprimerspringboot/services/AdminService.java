@@ -1,6 +1,7 @@
 package com.example.miprimerspringboot.services;
 
 import com.example.miprimerspringboot.entidades.Admin;
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,4 +27,39 @@ public class AdminService {
     public AdminService(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
     }
+
+    public Admin update(Admin u){
+        if (u.getId()!=null){
+            Optional<Admin> adm=adminRepository.getById(u.getId());
+            if (adm.isPresent()){
+                Admin oldCat=adm.get();
+                if (u.getName()!=null){
+                    oldCat.setName(u.getName());
+                }
+                if (u.getName()!=null){
+                    oldCat.setName(u.getName());
+                }
+                if (u.getEmail()!=null){
+                    oldCat.setEmail(u.getEmail());
+                }
+                if (u.getPassword()!=null){
+                    oldCat.setPassword(u.getPassword());
+                }
+                return adminRepository.save(oldCat);
+            }
+        }
+        return u;
+    }
+
+    public boolean delete(int id){
+        Optional<Admin> adm=adminRepository.getById(id);
+        if(adm.isPresent()){
+            adminRepository.delete(adm.get());
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.repository;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Reservation;
 import com.example.miprimerspringboot.repository.CRUDRepository.ReservationCRUDRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class ReservationRepository {
 
     public Optional<Reservation> getById(int id){
         return reservationCRUDRepository.findById(id);
+    }
+
+    public void delete(Reservation c){
+        reservationCRUDRepository.delete(c);
     }
 
 }

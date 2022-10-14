@@ -34,4 +34,12 @@ public class CategoryController {
     public Optional<Category> getClient(@PathVariable("id") int categoryId){
         return categoryService.getById(categoryId);
     }
+    @PutMapping("/update")
+    public Category update(@RequestBody Category u){
+        return categoryService.update(u);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return categoryService.delete(id);
+    }
 }

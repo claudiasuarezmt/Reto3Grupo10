@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.controller;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Message;
 import com.example.miprimerspringboot.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,14 @@ public class MessageController {
     @GetMapping("/{id}")
     public Optional<Message> getMessage(@PathVariable("id") int messageId){
         return messageService.getMessage(messageId);
+    }
+    @PutMapping("/update")
+    public Message update(@RequestBody Message u){
+        return messageService.update(u);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return messageService.delete(id);
     }
 
 }

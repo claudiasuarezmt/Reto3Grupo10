@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.repository;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Client;
 import com.example.miprimerspringboot.repository.CRUDRepository.ClientCRUDRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class ClientRepository {
 
     public Optional<Client> getById(int id){
          return clientCRUDRepository.findById(id);
+    }
+
+    public void delete(Client c){
+        clientCRUDRepository.delete(c);
     }
 }

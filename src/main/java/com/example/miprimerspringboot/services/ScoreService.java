@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.services;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Score;
 import com.example.miprimerspringboot.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,32 @@ public class ScoreService {
     }
     public Score save(Score sc){
         return scoreRepository.save(sc);
+    }
+
+    public Score update(Score u){
+        if (u.getIdScore()!=null){
+            Optional<Score> sco=scoreRepository.getById(u.getIdScore());
+            if (sco.isPresent()){
+                Score oldCat=sco.get();
+                if (u.getScore()!=null){
+                    oldCat.setScore(u.getScore());
+                }
+
+                return scoreRepository.save(oldCat);
+            }
+        }
+        return u;
+    }
+
+    public boolean delete(int id){
+        Optional<Score> scre=scoreRepository.getById(id);
+        if(scre.isPresent()){
+            scoreRepository.delete(scre.get());
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.controller;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Library;
 import com.example.miprimerspringboot.services.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,14 @@ public class LibraryController {
     @ResponseStatus(HttpStatus.CREATED)
     public Library save(@RequestBody Library lb){
         return libraryService.save(lb);
+    }
+
+    @PutMapping("/update")
+    public Library update(@RequestBody Library u){
+        return libraryService.update(u);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return libraryService.delete(id);
     }
 }

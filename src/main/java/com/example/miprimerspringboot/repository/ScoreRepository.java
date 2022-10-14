@@ -1,5 +1,6 @@
 package com.example.miprimerspringboot.repository;
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Score;
 import com.example.miprimerspringboot.repository.CRUDRepository.ScoreCRUDRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class ScoreRepository {
     }
     public Score save(Score sc){
         return scoreCRUDRepository.save(sc);
+    }
+
+    public void delete(Score c){
+        scoreCRUDRepository.delete(c);
     }
 }

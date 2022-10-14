@@ -1,6 +1,7 @@
 package com.example.miprimerspringboot.controller;
 
 
+import com.example.miprimerspringboot.entidades.Category;
 import com.example.miprimerspringboot.entidades.Client;
 import com.example.miprimerspringboot.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,14 @@ public class ClientController {
     @GetMapping("/{id}")
     public Optional<Client> getClient(@PathVariable("id") int clientId){
         return clientService.getById(clientId);
+    }
+
+    @PutMapping("/update")
+    public Client update(@RequestBody Client u){
+        return clientService.update(u);
+    }
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){
+        return clientService.delete(id);
     }
 }
