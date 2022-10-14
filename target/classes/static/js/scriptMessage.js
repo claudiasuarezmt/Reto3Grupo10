@@ -130,7 +130,7 @@ function deleteMessage(idMessage) {
     let data = { id: idMessage };
     let dataToSend = JSON.stringify(data);
     $.ajax({
-        url: myURLMessage+'/delete',
+        url: myURLMessage+'/'+idMessage,
         type: 'DELETE',
         contentType: 'application/json',
         data: dataToSend,

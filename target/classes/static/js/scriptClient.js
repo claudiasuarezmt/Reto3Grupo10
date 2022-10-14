@@ -173,7 +173,7 @@ function deleteClient(idClient) {
     let data = { id: idClient };
     let dataToSend = JSON.stringify(data);
     $.ajax({
-        url: myURLCliente+'/delete',
+        url: myURLCliente+'/'+idClient,
         type: 'DELETE',
         contentType: 'application/json',
         data: dataToSend,

@@ -132,7 +132,7 @@ function deleteCategory(idCategory) {
     let data = { id: idCategory };
     let dataToSend = JSON.stringify(data);
     $.ajax({
-        url: myURLCategory+'/delete/'+idCategory,
+        url: myURLCategory+'/'+idCategory,
         type: 'DELETE',
         contentType: 'application/json',
         data: dataToSend,

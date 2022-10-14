@@ -120,7 +120,7 @@ function deleteAdmin(idAdmin) {
     let data = { id: idAdmin };
     let dataToSend = JSON.stringify(data);
     $.ajax({
-        url: myURLAdmin+'/delete/'+idAdmin,
+        url: myURLAdmin+'/'+idAdmin,
         type: 'DELETE',
         contentType: 'application/json',
         data: dataToSend,
