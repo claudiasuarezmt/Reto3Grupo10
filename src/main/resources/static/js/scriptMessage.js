@@ -1,6 +1,7 @@
 //Este archivo contiene todas las funciones relacionadas con el mensaje
 var myURLMessage = 'api/Message';
 //esta funcion obtiene todos los mensajes
+menuOptionxxx='';
 function getMessage() {
 
     $.ajax({
@@ -71,6 +72,8 @@ function pintarMensaje(items) {
 }
 
 function habilitaDatosMensaje(nuTipo) {
+
+
     //Esta funcion muestra en pantalla los datos del mensaje para crear o actualizar
     $("#camposmessage").empty();
     let campos = "<h2>Ingrese la información del Mensaje</h2>"
@@ -80,13 +83,7 @@ function habilitaDatosMensaje(nuTipo) {
         campos += "<input type=number id=idMessage disabled class=input><br>";
     }
     campos += "<label width: 180px;>Mensaje: </label><input type=text id=Messagetext class=input><br>";
-    campos += "<div className=dropdown>" +
-             "<button className=btn btn-secondary dropdown-toggle type=button id=dropdownMenuButton data-toggle=dropdown aria-haspopup=true aria-expanded=false>Dropdown button </button>"+
-             "<div className=dropdown-menu aria-labelledby=dropdownMenuButton>"+
-            "<a className=dropdown-item >Action</a>"+
-            "<a className=dropdown-item >Another action</a>"+
-            "<a className=dropdown-item >Something else here</a></div></div>"
-
+    campos += "<label width: 180px;>Biblioteca: </label><select id=library>"+menuOptionxxx+"</select><br/>";
 
     if (nuTipo == 1) {
         campos += "<button onclick=saveMessage() >Guardar Mensaje</button>";
@@ -97,14 +94,20 @@ function habilitaDatosMensaje(nuTipo) {
 
     campos += "</div>";
     $("#camposmessage").append(campos);
+
+
+
+
 }
 function getMensajeInfo() {
     let idMessage = $("#idMessage").val();
     let MessageText = $("#Messagetext").val();
+    let selectedVal = $("#library option:selected").val();
 
     let mensaje = {
-        id: idMessage,
-        messageText: MessageText
+        idMessage: idMessage,
+        messageText: MessageText,
+        lib: {id:selectedVal }
     };
 
     return mensaje;
@@ -174,7 +177,7 @@ function updateMessage() {
 
 }
 function getDetailMessage(idMessage) {
-    habilitaDatosMensaje(2);
+
 
     $.ajax({
         url: myURLMessage + "/" + idMessage,
@@ -182,9 +185,10 @@ function getDetailMessage(idMessage) {
         dataType: 'json',
         success: function (message) {
 
-
+            habilitaDatosMensaje(2);
             $("#idMessage").val(message.idMessage);
             $("#Messagetext").val(message.messageText);
+            $("#library").val(message.lib.id);
 
         },
         error: function (xhr, status) {
@@ -192,3 +196,20 @@ function getDetailMessage(idMessage) {
         }
     });
 }
+
+window.addEventListener('load', async function() {
+    let option = "";
+    try {
+        let menuOption = await fetch('api/Lib/all');
+        let library = await menuOption.json();
+
+        for (i = 0; i < library.length; i++) {
+            option += '<option value="' + library[i].id + '">' + library[i].name + '</option>';
+        }
+    }catch (e) {
+        console.log(e);
+    }
+    menuOptionxxx = option;
+    console.log(menuOptionxxx);
+
+});
