@@ -88,7 +88,7 @@ function habilitaDatosCategory(nuTipo) {
 
 //obtiene los datos digitados en el formulario de category
 function getCategoryInfo() {
-    let idCate =$("#idCCategory").val();
+    let idCate =$("#idCategory").val();
     let nameCate = $("#nameCategory").val();
     let descCateg = $("#descCategory").val();
 
