@@ -43,6 +43,14 @@ let menu = '<div class="navbar-left">\n' +
     }
 
     menu=menu+'Mensajes </a></li>';
+
+    if(item==="Reservation.html"){
+        menu= menu+'<li><a href="Reservation.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="Reservation.html">';
+    }
+
+    menu=menu+'Reservas </a></li>';
     menu=menu+'</ul></div>'
     $("#menu").html(menu);
 
