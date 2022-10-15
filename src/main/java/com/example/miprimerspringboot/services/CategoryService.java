@@ -41,11 +41,15 @@ public class CategoryService {
         return u;
     }
 
-    public boolean delete(int id){
+    public boolean delete(int id) {
         Optional<Category> categ=categoryRepository.getById(id);
         if(categ.isPresent()){
-            categoryRepository.delete(categ.get());
-            return true;
+            if(categ.get().getLibs().isEmpty()) {
+                categoryRepository.delete(categ.get());
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }

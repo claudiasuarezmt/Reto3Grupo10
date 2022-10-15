@@ -137,10 +137,16 @@ function deleteCategory(idCategory) {
         contentType: 'application/json',
         data: dataToSend,
         success: function (category) {
-            getCategory();
+            if(category){
+                getCategory();
+            }else{
+                alert('No se puede eliminar la categoría, tiene librerias asociadas');
+            }
+
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema');
+            console.log(JSON.stringify(xhr));
         }
     });
 }
