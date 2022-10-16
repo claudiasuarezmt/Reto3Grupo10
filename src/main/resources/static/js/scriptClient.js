@@ -26,7 +26,7 @@ function getClients() {
 //pinta la tabla en pantalla con los datos de los clientes
 function pintarCliente(items) {
     let myTableCliente = "<table cellpadding=0 cellspacing=0 class=tabla >";
-    myTableCliente += "<tr><td style=width:150px>Id Cliente</th><td style=width:150px>Nombre</th><td style=width:150px>Correo</th><td style=width:150px>Edad</th><td style=width:150px>Acciones</th></tr>";
+    myTableCliente += "<tr><td style=width:150px>Id Cliente</td><td style=width:150px>Nombre</td><td style=width:150px>Correo</td><td style=width:150px>Edad</td><td style=width:150px>Acciones</td></tr>";
     if(items !== undefined){
         for (i = 0; i < items.length; i++) {
             myTableCliente += "<tr>";
@@ -60,9 +60,9 @@ function habilitaDatosCliente(nuTipo) {
     }else{
         campos += "<label width: 180px;>Correo: </label><input type=text id=emailClient disabled class=input><br>";
     }
-    if (nuTipo ==1){
-        campos += "<label width: 180px;>Contraseña:   </label><input type=password id=passClient class=input><br>";
-    }
+
+    campos += "<label width: 180px;>Contraseña:   </label><input type=password id=passClient class=input><br>";
+
     campos += "<label width: 180px;>Edad:   </label><input type=number id=ageClient class=input><br>";
 
     //si el tipo es 1 es para crearlo y si el tipo es 2 para actaulizarlo

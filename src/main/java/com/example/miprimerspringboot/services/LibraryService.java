@@ -18,8 +18,11 @@ public class LibraryService {
         return (List<Library>)libraryRepository.getAll();
     }
     public Library save(Library lb){
-
-        return libraryRepository.save(lb);
+        if(validateLibrary(lb)){
+            return libraryRepository.save(lb);
+        }else{
+            return lb;
+        }
     }
     public Optional<Library> getById(int idLibrary){
         return libraryRepository.getById(idLibrary);
@@ -35,7 +38,11 @@ public class LibraryService {
                 if (u.getDescription()!=null){
                     oldCat.setDescription(u.getDescription());
                 }
-                return libraryRepository.save(oldCat);
+                if(validateLibrary(oldCat)){
+                    return libraryRepository.save(oldCat);
+                }else{
+                    return u;
+                }
             }
         }
         return u;
@@ -50,5 +57,12 @@ public class LibraryService {
             return false;
         }
 
+    }
+    public boolean validateLibrary(Library lb){
+        if(lb.getTarget().length()<=45 && lb.getName().length()<=45 && lb.getDescription().length()<=250 && Math.round(lb.getCapacity())-lb.getCapacity()==0 ){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

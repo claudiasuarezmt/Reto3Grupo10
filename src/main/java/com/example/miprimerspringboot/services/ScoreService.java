@@ -22,7 +22,13 @@ public class ScoreService {
         return scoreRepository.getById(id);
     }
     public Score save(Score sc){
-        return scoreRepository.save(sc);
+        if(validateScore(sc)) {
+            return scoreRepository.save(sc);
+        }else{
+            return sc;
+        }
+
+
     }
 
     public Score update(Score u){
@@ -33,8 +39,13 @@ public class ScoreService {
                 if (u.getScore()!=null){
                     oldCat.setScore(u.getScore());
                 }
+                if(validateScore(oldCat)){
+                    return scoreRepository.save(oldCat);
+                }else{
+                    return u;
+                }
 
-                return scoreRepository.save(oldCat);
+
             }
         }
         return u;
@@ -49,6 +60,13 @@ public class ScoreService {
             return false;
         }
 
+    }
+    public boolean validateScore(Score sc){
+        if( Math.round(sc.getScore()-sc.getScore()) == 0 && sc.getScore()>=0 && sc.getScore()<=5) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

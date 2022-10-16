@@ -19,7 +19,12 @@ public class ClientService {
     }
 
     public Client save(Client c){
-        return clientRepository.save(c);
+        if(validateClient(c)){
+            return clientRepository.save(c);
+        }else{
+            return c;
+        }
+
     }
     public Optional<Client> getById(int id){
         return clientRepository.getById(id);
@@ -33,17 +38,19 @@ public class ClientService {
                 if (u.getName()!=null){
                     oldCat.setName(u.getName());
                 }
-                if (u.getEmail()!=null){
-                    oldCat.setEmail(u.getEmail());
-                }
+
                 if (u.getPassword()!=null){
                     oldCat.setPassword(u.getPassword());
                 }
                 if (u.getAge()!=null){
                     oldCat.setAge(u.getAge());
                 }
+                if(validateClient(oldCat)){
+                    return clientRepository.save(oldCat);
+                }else{
+                    return u;
+                }
 
-                return clientRepository.save(oldCat);
             }
         }
         return u;
@@ -58,6 +65,13 @@ public class ClientService {
             return false;
         }
 
+    }
+    public boolean validateClient(Client c){
+        if(c.getPassword().length()<=45 && c.getName().length()<=250 && Math.round(c.getAge())-c.getAge()==0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

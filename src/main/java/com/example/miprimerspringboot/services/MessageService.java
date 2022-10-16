@@ -26,13 +26,21 @@ public class MessageService {
 
     public Message save(Message m) {
         if(m.getIdMessage()==null){
-            return messageRepository.save(m);
+            if(validateMessage(m)) {
+                return messageRepository.save(m);
+            }else{
+                return m;
+            }
         }else{
             Optional<Message> mt=messageRepository.getMessage(m.getIdMessage());
             if (mt.isPresent()){
                 return m;
             }else{
-                return messageRepository.save(m);
+                if(validateMessage(m)) {
+                    return messageRepository.save(m);
+                }else{
+                    return m;
+                }
             }
         }
     }
@@ -41,17 +49,18 @@ public class MessageService {
         if (m.getIdMessage()!=null){
             Optional<Message> mt=messageRepository.getMessage(m.getIdMessage());
             if (mt.isPresent()){
-                if (m.getIdMessage()!=null){
-                    mt.get().setIdMessage(m.getIdMessage());
-                }
-                if (m.getLib()!=null){
-                    mt.get().setLib(m.getLib());
+
+                if (m.getMessageText()!=null){
+                    mt.get().setMessageText(m.getMessageText());
                 }
                 if (m.getClient()!=null){
                     mt.get().setClient(m.getClient());
                 }
-                messageRepository.save(mt.get());
-                return mt.get();
+                if (validateMessage(mt.get())){
+                    messageRepository.save(mt.get());
+                }else {
+                    return m;
+                }
             }else {
                 return m;
 
@@ -59,6 +68,7 @@ public class MessageService {
         }else{
             return m;
         }
+        return m;
     }
 
     public boolean delete(int id){
@@ -70,5 +80,11 @@ public class MessageService {
         }
         return flaq;
     }
-
+    public boolean validateMessage(Message m){
+        if(m.getMessageText().length()<=250){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

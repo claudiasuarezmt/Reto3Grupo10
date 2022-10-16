@@ -21,7 +21,11 @@ public class AdminService {
         return adminRepository.getById(id);
     }
     public Admin save(Admin ad){
-        return adminRepository.save(ad);
+        if(validateAdmin(ad)) {
+            return adminRepository.save(ad);
+        }else{
+            return ad;
+        }
     }
 
     public AdminService(AdminRepository adminRepository) {
@@ -45,7 +49,11 @@ public class AdminService {
                 if (u.getPassword()!=null){
                     oldCat.setPassword(u.getPassword());
                 }
-                return adminRepository.save(oldCat);
+                if(validateAdmin(oldCat)){
+                    return adminRepository.save(oldCat);
+                }else{
+                    return u;
+                }
             }
         }
         return u;
@@ -61,5 +69,11 @@ public class AdminService {
         }
 
     }
-
+    public boolean validateAdmin(Admin ad){
+        if (ad.getName().length()<=250 && ad.getPassword().length()<=45 && ad.getEmail().length()<=45){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

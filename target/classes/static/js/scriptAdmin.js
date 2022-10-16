@@ -11,7 +11,7 @@ function getAdmins() {
         success: function (admins) {
 
 
-            $("#campos").empty();
+            $("#camposAdmin").empty();
             $("#admin").empty();
             pintarAdmins(admins);
 
@@ -60,7 +60,7 @@ function habilitaDatosAdmin(nuTipo) {
     }else{
         campos += "<label width: 180px;>Correo: </label><input type=text id=emailAdmin disabled class=input><br>";
     }
-
+    campos += "<label width: 180px;>Contraseña:   </label><input type=password id=passAdmin class=input><br>";
 
 
 
@@ -79,12 +79,14 @@ function getAdminInfo() {
     let idAdmin =$("#idAdmin").val();
     let nameAdmin = $("#nameAdmin").val();
     let emailAdmin = $("#emailAdmin").val();
+    let passAdmin = $("#passAdmin").val();
 
 
     let admin = {
         id: idAdmin,
         name: nameAdmin,
-        email: emailAdmin
+        email: emailAdmin,
+        password: passAdmin
     };
 
     return admin;
@@ -176,6 +178,7 @@ function getDetailAdmin(idAdmin) {
             $("#idAdmin").val(admin.id);
             $("#nameAdmin").val(admin.name)
             $("#emailAdmin").val(admin.email);
+            $("#passAdmin").val(admin.password);
 
 
         },
