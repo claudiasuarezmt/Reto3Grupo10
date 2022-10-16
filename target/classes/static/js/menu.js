@@ -51,6 +51,13 @@ let menu = '<div class="navbar-left">\n' +
     }
 
     menu=menu+'Reservas </a></li>';
+
+    if(item==="lib.html"){
+        menu= menu+'<li><a href="lib.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="lib.html">';
+    }
+    menu=menu+'Libreria </a></li>';
     menu=menu+'</ul></div>'
     $("#menu").html(menu);
 

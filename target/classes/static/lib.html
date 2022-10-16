@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Libreria</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/scriptLib.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+</head>
+
+
+
+<body>
+<div id="menu">
+
+</div>
+<div class="contenido">
+    <h1>
+        <p>Listado de Libreria</p>
+    </h1>
+</div>
+
+
+<div>
+    <table class="tabla"  id="tabLib">
+        <tbody>
+        <tr>
+            <th style="width:150px">Id Libro</th>
+            <th style="width:150px">Nombre</th>
+            <th style="width:150px">Objetivo</th>
+            <th style="width:150px">Capacidad</th>
+            <th style="width:150px">Descripcion</th>
+            <th style="width:150px">Mensaje</th>
+            <th style="width:150px">Reservación</th>
+
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<div class="botones">
+    <button onclick="getLib()">Consultar</button>
+    <button onclick="habilitaDatosLib(1)">Crear Reserva</button>
+</div>
+<div class="formulario" id="campos">
+</div>
+
+
+</body>
+
+</html>
