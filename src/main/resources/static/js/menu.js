@@ -19,7 +19,6 @@ let menu = '<div class="navbar-left">\n' +
     }
     menu=menu+'Administradores </a></li>';
 
-
     if(item==="client.html"){
         menu= menu+'<li><a href="client.html" style="color: black;">';
     }else{
@@ -35,6 +34,15 @@ let menu = '<div class="navbar-left">\n' +
     }
 
     menu=menu+'Categorias </a></li>';
+
+
+    if(item==="lib.html"){
+        menu= menu+'<li><a href="lib.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="lib.html">';
+    }
+    menu=menu+'Libreria </a></li>';
+    menu=menu+'</ul></div>'
     menu=menu+'</ul></div>'
     $("#menu").html(menu);
 
