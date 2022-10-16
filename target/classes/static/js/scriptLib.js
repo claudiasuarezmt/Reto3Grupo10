@@ -9,12 +9,9 @@ function getLib() {
         type: 'GET',
         dataType: 'json',
         success: function (lib) {
-            let cs = lib.items;
-            console.log(lib);
-            $("#campos").empty();
+            $("#tabLib").empty();
             $("#lib").empty();
             pintarlib(lib);
-
 
         },
         error: function (xhr, status) {
@@ -43,13 +40,33 @@ function pintarlib(items) {
             myTableLib += "<td style=width:150px>" + items[i].target + "</td>"
             myTableLib += "<td style=width:150px>" + items[i].capacity + "</td>"
             myTableLib += "<td style=width:150px>" + items[i].description + "</td>"
-            myTableLib += "<td style=width:150px>" + items[i].message() + "</td>"
+            myTableLib += "<td style=width:150px>" + items[i].messageText() + "</td>"
             myTableLib += "<td style=width:150px>" + items[i].endReservation + "</td>"
+
+            if(items[i].libs.length !== 0) {
+                myTableLib += '<td><table class="nulo">'
+                for (j = 0; j < items[i].libs.length; j++) {
+                    myTableLib += "<tr style='background-color:#DDEBF7; color: black; '><td style=width:70px>" + items[i].libs[j].name + "</td>"
+                    myTableLib += "<td style=width:70px>" + items[i].libs[j].target + "</td>"
+                    myTableLib += "<td style=width:70px>" + items[i].libs[j].capacity + "</td>"
+                    myTableLib += "<td style=width:70px>" + items[i].libs[j].description + "</td></tr>"
+                }
+            }
 
             myTableLib += "<td><button onclick=getDetailLib(" + items[i].id + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button></td>";
             myTableLib += "</tr>";
         }
+
+        myTableLib+='</table></td>'
+    }else{
+        myTableLib += "<td style=width:280px></td>"
+
+
     }
+    myTableLib += "<td style=width:150px>"+"<button onclick=getDetailLib(" + items[i].id + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
+    myTableLib += "<button onclick=deleteLib(" + items[i].id + ") ><img src=/icons/delete2.png  alt=Eliminar height=20></button></td>";
+    myTableLib += "</tr>";
+
     myTableLib += "</table>";
     $("#tabLib").append(myTableLib);
 
@@ -57,7 +74,7 @@ function pintarlib(items) {
 
 function habilitaDatosLib(nuTipo) {
     //Esta funcion muestra en pantalla los datos del libros para crear o actualizar libros
-    $("#campos").empty();
+    $("#camposLib").empty();
     let campos = "<h2>Ingrese la información del Libro</h2>";
 
     if (nuTipo == 2) {
@@ -89,21 +106,21 @@ function habilitaDatosLib(nuTipo) {
             campos += "<button onclick=updateLib() >Guardar Libreria</button>";
         }
         campos += "</div>";
-        $("#campos").append(campos);
+        $("#camposlib").append(campos);
     }
 
 //obtiene los datos digitados en el formulario de clientes
     function getLibInfo() {
-        let idLib = $("#idLib").val();
-        let nameLib = $("#nameLib").val();
-        let objetivoLib = $("#objetivoLib").val();
-        let targetLib = $("#targetLib").val();
-        let descripcionLib = $("#descripcionLib").val();
+        let idLib = $("#idLibrary").val();
+        let nameLib = $("#nameLibrary").val();
+        let objetivoLib = $("#objetivoLibrary").val();
+        let targetLib = $("#targetLibrary").val();
+        let descripcionLib = $("#descripcionLibrary").val();
 
         }
 
         let lib = {
-            id: idLib,
+            id: idlib,
             name: nameLib,
             target: objetivoLib,
             capacity: capacidadLib,
@@ -132,7 +149,7 @@ function habilitaDatosLib(nuTipo) {
             contentType: 'application/json',
             data: dataToSend,
             success: function (lib) {
-                getlib();
+                getLib();
             },
             error: function (xhr, status) {
                 alert('ha sucedido un problema');
@@ -189,5 +206,5 @@ function habilitaDatosLib(nuTipo) {
                 alert('ha sucedido un problema', status.data);
             }
         });
-    }
+
 }

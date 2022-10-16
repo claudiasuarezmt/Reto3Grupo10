@@ -24,7 +24,11 @@ function getCategory() {
 //pinta la tabla en pantalla con los datos de la categoria
 function pintarCategory(items) {
     let myTableCategory = "<table cellpadding=0 cellspacing=0 class=tabla >";
-    myTableCategory += "<tr><td style=width:150px>Nombre</td><td style=width:150px>Descripcion</td><td  style=width:150px>Bibliotecas</td><td style=width:150px>Acciones</td></tr>";
+    myTableCategory += "<tr>" +
+        "<td style=width:150px>Nombre</td>" +
+        "<td style=width:150px>Descripcion</td>" +
+        "<td  style=width:150px>Bibliotecas</td>" +
+        "<td style=width:150px>Acciones</td></tr>";
     if(items !== undefined){
         for (i = 0; i < items.length; i++) {
 
