@@ -9,6 +9,13 @@ label {
     width: 150px;
 }
 
+.input2{
+    width: 630px;
+    overflow: hidden;
+    height: 33px;
+    border: none;
+}
+
 .input {
     border: 1px solid #CCCCCC;
     height: 16px;
