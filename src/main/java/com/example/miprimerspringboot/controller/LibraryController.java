@@ -31,10 +31,12 @@ public class LibraryController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Library update(@RequestBody Library u){
         return libraryService.update(u);
     }
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return libraryService.delete(id);
     }
