@@ -79,11 +79,16 @@ function habilitaDatosMensaje(nuTipo) {
     let campos = "<h2>Ingrese la información del Mensaje</h2>"
 
     if (nuTipo == 2) {
-        campos += "<label width: 180px;>Código: </label>"
-        campos += "<input type=number id=idMessage disabled class=input><br>";
+        campos += "<input type=hidden id=idMessage disabled class=input><br>";
     }
     campos += "<label width: 180px;>Mensaje: </label><input type=text id=Messagetext class=input><br>";
-    campos += "<label width: 180px;>Biblioteca: </label><select id=library>"+menuOptionxxx+"</select><br/>";
+    if (nuTipo==1){
+        campos += "<label width: 180px;>Biblioteca: </label><select id=library>"+menuOptionxxx+"</select><br/>";
+    }else{
+        campos += "<label width: 180px;>Biblioteca: </label><select id=library disabled> " +menuOptionxxx+"</select><br/>";
+    }
+
+
 
     if (nuTipo == 1) {
         campos += "<button onclick=saveMessage() >Guardar Mensaje</button>";

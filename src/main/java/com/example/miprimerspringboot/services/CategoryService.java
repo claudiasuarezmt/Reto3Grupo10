@@ -17,8 +17,12 @@ public class CategoryService {
         return categoryRepository.getAll();
     }
 
-    public Category save(Category c){
-        return categoryRepository.save(c);
+    public Category save(Category c) {
+        if (validateCategory(c)) {
+            return categoryRepository.save(c);
+        }else{
+            return c;
+        }
     }
     public Optional<Category> getById(int id){
         return categoryRepository.getById(id);
@@ -35,7 +39,11 @@ public class CategoryService {
                 if (u.getDescription()!=null){
                     oldCat.setDescription(u.getDescription());
                 }
-                return categoryRepository.save(oldCat);
+                if(validateCategory(oldCat)){
+                    return categoryRepository.save(oldCat);
+                }else{
+                    return u;
+                }
             }
         }
         return u;
@@ -54,5 +62,12 @@ public class CategoryService {
             return false;
         }
 
+    }
+    public boolean validateCategory(Category c){
+        if (c.getName().length()<=45 && c.getDescription().length()<=250){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

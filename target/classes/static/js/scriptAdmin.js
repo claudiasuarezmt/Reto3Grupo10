@@ -11,7 +11,7 @@ function getAdmins() {
         success: function (admins) {
 
 
-            $("#campos").empty();
+            $("#camposAdmin").empty();
             $("#admin").empty();
             pintarAdmins(admins);
 
@@ -26,11 +26,10 @@ function getAdmins() {
 //pinta la tabla en pantalla con los datos de los clientes
 function pintarAdmins(items) {
     let myTableAdmin = "<table cellpadding=0 cellspacing=0 class=tabla >";
-    myTableAdmin += "<tr><td style=width:150px>Id Administrador</td><td style=width:150px>Nombre</td><td style=width:150px>Correo</td><td style=width:150px>Acciones</td></tr>";
+    myTableAdmin += "<tr><td style=width:150px>Nombre</td><td style=width:150px>Correo</td><td style=width:150px>Acciones</td></tr>";
     if(items !== undefined){
         for (i = 0; i < items.length; i++) {
             myTableAdmin += "<tr>";
-            myTableAdmin += "<td style=width:150px>" + items[i].id + "</td>"
             myTableAdmin += "<td style=width:150px>" + items[i].name + "</td>"
             myTableAdmin += "<td style=width:150px>" + items[i].email + "</td>"
             myTableAdmin += "<td style=width:150px>"+"<button onclick=getDetailAdmin(" + items[i].id + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
@@ -50,8 +49,7 @@ function habilitaDatosAdmin(nuTipo) {
     let campos = "<h2>Ingrese la informacion del administrador</h2>";
 
     if (nuTipo == 2) {
-        campos += "<label width: 180px;>Codigo: </label>"
-        campos += "<input type=number id=idAdmin disabled class=input><br>";
+        campos += "<input type=hidden id=idAdmin disabled class=input><br>";
     }
 
     campos += "<label width: 180px;>Nombre: </label><input type=text id=nameAdmin class=input><br>";
@@ -60,7 +58,7 @@ function habilitaDatosAdmin(nuTipo) {
     }else{
         campos += "<label width: 180px;>Correo: </label><input type=text id=emailAdmin disabled class=input><br>";
     }
-
+    campos += "<label width: 180px;>Contraseña:   </label><input type=password id=passAdmin class=input><br>";
 
 
 
@@ -79,12 +77,14 @@ function getAdminInfo() {
     let idAdmin =$("#idAdmin").val();
     let nameAdmin = $("#nameAdmin").val();
     let emailAdmin = $("#emailAdmin").val();
+    let passAdmin = $("#passAdmin").val();
 
 
     let admin = {
         id: idAdmin,
         name: nameAdmin,
-        email: emailAdmin
+        email: emailAdmin,
+        password: passAdmin
     };
 
     return admin;
@@ -176,6 +176,7 @@ function getDetailAdmin(idAdmin) {
             $("#idAdmin").val(admin.id);
             $("#nameAdmin").val(admin.name)
             $("#emailAdmin").val(admin.email);
+            $("#passAdmin").val(admin.password);
 
 
         },

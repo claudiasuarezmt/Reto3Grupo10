@@ -21,7 +21,7 @@ public class LibraryController {
         return libraryService.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Library> getById(@PathVariable("idLibrary") int idLibrary){
+    public Optional<Library> getById(@PathVariable("id") int idLibrary){
         return libraryService.getById(idLibrary);
     }
     @PostMapping("/save")
@@ -31,10 +31,12 @@ public class LibraryController {
     }
 
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Library update(@RequestBody Library u){
         return libraryService.update(u);
     }
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
         return libraryService.delete(id);
     }
