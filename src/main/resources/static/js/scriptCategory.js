@@ -68,8 +68,7 @@ function habilitaDatosCategory(nuTipo) {
         let campos = "<h2>Ingrese la informacion de la categoría</h2>";
 
         if (nuTipo == 2) {
-            campos += "<label width: 180px;>Codigo: </label>"
-            campos += "<input type=number id=idCategory disabled class=input><br>";
+            campos += "<input type=hidden id=idCategory disabled class=input><br>";
         }
 
         campos += "<label width: 180px;>Nombre: </label><input type=text id=nameCategory class=input><br>";

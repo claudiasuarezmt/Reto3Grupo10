@@ -26,11 +26,10 @@ function getClients() {
 //pinta la tabla en pantalla con los datos de los clientes
 function pintarCliente(items) {
     let myTableCliente = "<table cellpadding=0 cellspacing=0 class=tabla >";
-    myTableCliente += "<tr><td style=width:150px>Id Cliente</td><td style=width:150px>Nombre</td><td style=width:150px>Correo</td><td style=width:150px>Edad</td><td style=width:150px>Acciones</td></tr>";
+    myTableCliente += "<tr><td style=width:150px>Nombre</td><td style=width:150px>Correo</td><td style=width:150px>Edad</td><td style=width:150px>Acciones</td></tr>";
     if(items !== undefined){
         for (i = 0; i < items.length; i++) {
             myTableCliente += "<tr>";
-            myTableCliente += "<td style=width:150px>" + items[i].idClient + "</td>"
             myTableCliente += "<td style=width:150px>" + items[i].name + "</td>"
             myTableCliente += "<td style=width:150px>" + items[i].email + "</td>"
             myTableCliente += "<td style=width:150px>" + items[i].age + "</td>"
@@ -50,8 +49,7 @@ function habilitaDatosCliente(nuTipo) {
     let campos = "<h2>Ingrese la informacion del Cliente</h2>";
 
     if (nuTipo == 2) {
-        campos += "<label width: 180px;>Codigo: </label>"
-        campos += "<input type=number id=idClient disabled class=input><br>";
+        campos += "<input type=hidden id=idClient disabled class=input><br>";
     }
 
     campos += "<label width: 180px;>Nombre: </label><input type=text id=nameClient class=input><br>";
@@ -161,6 +159,7 @@ function getDetailClient(idClient) {
             $("#nameClient").val(cs.name)
             $("#emailClient").val(cs.email);
             $("#ageClient").val(cs.age);
+            $("#passClient").val(cs.password);
 
         },
         error: function (xhr, status) {
