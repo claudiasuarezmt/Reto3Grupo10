@@ -21,7 +21,7 @@ public class LibraryController {
         return libraryService.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Library> getById(@PathVariable("idLibrary") int idLibrary){
+    public Optional<Library> getById(@PathVariable("id") int idLibrary){
         return libraryService.getById(idLibrary);
     }
     @PostMapping("/save")

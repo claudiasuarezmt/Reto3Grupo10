@@ -36,6 +36,14 @@ let menu = '<div class="navbar-left">\n' +
 
     menu=menu+'Categorias </a></li>';
 
+    if(item==="library.html"){
+        menu= menu+'<li><a href="library.html" style="color: black;">';
+    }else{
+        menu= menu+'<li><a href="library.html">';
+    }
+
+    menu=menu+'Bibliotecas </a></li>';
+
     if(item==="message.html"){
         menu= menu+'<li><a href="message.html" style="color: black;">';
     }else{

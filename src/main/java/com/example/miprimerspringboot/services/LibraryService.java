@@ -35,6 +35,12 @@ public class LibraryService {
                 if (u.getName()!=null){
                     oldCat.setName(u.getName());
                 }
+                if (u.getTarget()!=null){
+                    oldCat.setTarget(u.getTarget());
+                }
+                if (u.getCapacity()!=null){
+                    oldCat.setCapacity(u.getCapacity());
+                }
                 if (u.getDescription()!=null){
                     oldCat.setDescription(u.getDescription());
                 }
