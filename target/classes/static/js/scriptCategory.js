@@ -88,7 +88,7 @@ function habilitaDatosCategory(nuTipo) {
 
 //obtiene los datos digitados en el formulario de category
 function getCategoryInfo() {
-    let idCate =$("#idCCategory").val();
+    let idCate =$("#idCategory").val();
     let nameCate = $("#nameCategory").val();
     let descCateg = $("#descCategory").val();
 
@@ -137,10 +137,16 @@ function deleteCategory(idCategory) {
         contentType: 'application/json',
         data: dataToSend,
         success: function (category) {
-            getCategory();
+            if(category){
+                getCategory();
+            }else{
+                alert('No se puede eliminar la categoría, tiene librerias asociadas');
+            }
+
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema');
+            console.log(JSON.stringify(xhr));
         }
     });
 }

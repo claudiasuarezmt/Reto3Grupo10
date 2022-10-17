@@ -106,7 +106,7 @@ function saveAdmin() {
         contentType: 'application/json',
         data: dataToSend,
         success: function (administrador) {
-            getAdmin();
+            getAdmins();
         },
         error: function (xhr, status) {
             alert('ha sucedido un problema');
