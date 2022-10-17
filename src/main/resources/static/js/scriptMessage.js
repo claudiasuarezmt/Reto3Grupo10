@@ -76,6 +76,7 @@ function habilitaDatosMensaje(nuTipo) {
 
     //Esta funcion muestra en pantalla los datos del mensaje para crear o actualizar
     $("#camposmessage").empty();
+    $("#camposmessage").show();
     let campos = "<h2>Ingrese la información del Mensaje</h2>"
 
     if (nuTipo == 2) {

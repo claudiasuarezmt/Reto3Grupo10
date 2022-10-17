@@ -58,6 +58,7 @@ function habilitaDatosLibrary(nuTipo) {
 
     //Esta funcion muestra en pantalla los datos del mensaje para crear o actualizar
     $("#camposLibrary").empty();
+    $("#camposLibrary").show();
     let campos = "<h2>Ingrese la información de la biblioteca</h2>"
 
     if (nuTipo == 2) {

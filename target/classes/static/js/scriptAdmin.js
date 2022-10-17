@@ -46,6 +46,7 @@ function pintarAdmins(items) {
 function habilitaDatosAdmin(nuTipo) {
     //Esta funcion muestra en pantalla los datos de los administradores
     $("#camposAdmin").empty();
+    $("#camposAdmin").show();
     let campos = "<h2>Ingrese la informacion del administrador</h2>";
 
     if (nuTipo == 2) {
