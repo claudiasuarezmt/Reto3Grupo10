@@ -65,6 +65,7 @@ function pintarCategory(items) {
 function habilitaDatosCategory(nuTipo) {
         //Esta funcion muestra en pantalla los datos de la categoria para crear o actualizar
         $("#camposCategory").empty();
+        $("#camposCategory").show();
         let campos = "<h2>Ingrese la informacion de la categoría</h2>";
 
         if (nuTipo == 2) {

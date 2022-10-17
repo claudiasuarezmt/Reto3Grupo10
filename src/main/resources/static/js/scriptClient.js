@@ -46,6 +46,7 @@ function pintarCliente(items) {
 function habilitaDatosCliente(nuTipo) {
     //Esta funcion muestra en pantalla los datos del cliente para crear o actualizar clientes
     $("#campos").empty();
+    $("#campos").show();
     let campos = "<h2>Ingrese la informacion del Cliente</h2>";
 
     if (nuTipo == 2) {
