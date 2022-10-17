@@ -144,5 +144,6 @@ tr:last-child td:last-child {
     width: 100%;
     margin: 30%;
     margin-top: 100px;
+    display: none;
 }
 

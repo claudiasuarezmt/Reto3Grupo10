@@ -10,8 +10,11 @@ function getReservation() {
         type: 'GET',
         dataType: 'json',
         success: function (reservas) {
+            $("#camposReservation").hide();
+            $("#camposScore").hide();
             $("#camposReservation").empty();
             $("#reservation").empty();
+            $("#camposScore").empty();
             pintarReservation(reservas);
 
 
@@ -67,7 +70,8 @@ function pintarReservation(items) {
             myTableReservation += "<td style=width:150px>" + fechaFin[0] +"</td>"
             myTableReservation += "<td style=width:150px>" + items[i].status + "</td>"
             myTableReservation += "<td style=width:150px>"+"<button onclick=getDetailReservation(" + items[i].idReservation + ") ><img src=/icons/edit.png  alt=Actualizar height=20></button>";
-            myTableReservation += "<button onclick=deleteReservation(" + items[i].idReservation + ") ><img src=/icons/delete2.png  alt=Eliminar height=20></button></td>";
+            myTableReservation += "<button onclick=deleteReservation(" + items[i].idReservation + ") ><img src=/icons/delete2.png  alt=Eliminar height=20></button>";
+            myTableReservation += "<button onclick=calificarReserva(" + items[i].idReservation + ") >Calificar</button></td>";
             myTableReservation += "</tr>";
         }
     }
@@ -78,6 +82,9 @@ function pintarReservation(items) {
 
 function habilitaDatosReservation(nuTipo) {
         //Esta funcion muestra en pantalla los datos de la reserva para crear o actualizar
+        $("#camposScore").hide();
+        $("#camposReservation").hide();
+        $("#camposReservation").show();
         $("#camposReservation").empty();
         let campos = "<h2>Ingrese la informacion de la reserva</h2>";
 
@@ -223,6 +230,8 @@ function updateReservation() {
 
 //esta función obtiene el dato de la categoria y lo muestra en el formulario de actualización.
 function getDetailReservation(idReserva) {
+    $("#camposScore").hide();
+    $("#camposReservation").hide();
     habilitaDatosReservation(2);
 
     $.ajax({
@@ -268,3 +277,76 @@ window.addEventListener('load', async function() {
     console.log(menuOptionxxx);
 
 });
+function calificarReserva(idReserva){
+    $("#camposReservation").hide();
+    $("#camposReservation").empty();
+    $("#camposScore").show();
+    $("#camposScore").empty();
+    let camposscore = "<h2>Calificación</h2>";
+        camposscore += "<input type=hidden id=idReserScore disabled class=input><br>";
+        camposscore += "<input type=hidden id=idScore disabled class=input><br>";
+        camposscore += "<div class='input2'><label width: 180px;>Calificación </label>" +
+        "<select   id=scoreScore>" +
+        "<option value=0>0</option>" +
+        "<option value=1>1</option>" +
+        "<option value=2>2</option>" +
+        "<option value=3>3</option>" +
+        "<option value=4>4</option>" +
+        "<option value=5>5</option>" +
+        "</select></div>";
+    camposscore += "<button onclick=saveScore() >Guardar Score</button>";
+    $("#camposScore").append(camposscore);
+    $.ajax({
+        url: myURLReservation + "/" + idReserva,
+        type: 'GET',
+        dataType: 'json',
+        success: function (reservation) {
+            $("#idReserScore").val(reservation.idReservation);
+            if(reservation.score !== null){
+                $("#idScore").val(reservation.score.idScore);
+                $("#scoreScore").val(reservation.score.score);
+            }
+
+        },
+        error: function (xhr, status) {
+            alert('ha sucedido un problema', status.data);
+        }
+    });
+}
+function getScoreInfo(){
+    let idReservation =$("#idReserScore").val();
+    let idScore = $("#idScore").val();
+    let score = $("#scoreScore option:selected").val();
+
+
+    let scorejson = {
+        reservation: {idReservation},
+        idScore: idScore,
+        score
+    };
+
+    return scorejson;
+}
+
+function saveScore() {
+
+    let data = getScoreInfo();
+    let dataToSend = JSON.stringify(data);
+
+    console.log(data);
+    console.log(dataToSend);
+
+    $.ajax({
+        url: 'api/Score/save',
+        type: 'POST',
+        contentType: 'application/json',
+        data: dataToSend,
+        success: function (score) {
+            getReservation();
+        },
+        error: function (xhr, status) {
+            alert('ha sucedido un problema');
+        }
+    });
+
+}
