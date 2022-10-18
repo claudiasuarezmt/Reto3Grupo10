@@ -83,7 +83,7 @@ public class ReservationService {
     }
     public StatusAccount getReservationByStatus(){
         List<Reservation> completos = reservationRepository.getStatusReport("completed");
-        List<Reservation> canceladas = reservationRepository.getStatusReport("canceled");
+        List<Reservation> canceladas = reservationRepository.getStatusReport("cancelled");
         StatusAccount resultado = new StatusAccount(completos.size(), canceladas.size());
         return resultado;
     }
