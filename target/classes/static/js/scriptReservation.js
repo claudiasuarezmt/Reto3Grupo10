@@ -50,8 +50,8 @@ function pintarReservation(items) {
                 myTableReservation += "<td style=width:150px></td>"
                 myTableReservation += "<td style=width:150px></td>"
             }
-            if (items[i].lib!=null){
-                myTableReservation += "<td style=width:150px>" + items[i].lib.name + "</td>"
+            if (items[i].library!=null){
+                myTableReservation += "<td style=width:150px>" + items[i].library.name + "</td>"
             }else{
                 myTableReservation += "<td style=width:150px></td>"
             }
@@ -149,7 +149,7 @@ function getReservationInfo() {
         devolutionDate: devolutionDate,
         client: {idClient:client},
         status: status,
-        lib: {id:library},
+        library: {id:library},
         score: null
     };
 
@@ -244,8 +244,9 @@ function getDetailReservation(idReserva) {
             $("#idReservation").val(reservation.idReservation);
             $("#iniReservation").val(fechaInicio[0])
             $("#endReservation").val(fechaFin[0]);
-            $("#library").val(reservation.lib.id);
             $("#status").val(reservation.status);
+            $("#library").val(reservation.library.id);
+
             $("#client").val(reservation.client.idClient);
 
         },
