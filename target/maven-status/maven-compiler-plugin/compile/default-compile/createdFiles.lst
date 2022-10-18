@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/example/miprimerspringboot/repository/CRUDRepository/CategoryCRUDRepository.class
 com/example/miprimerspringboot/controller/ScoreController.class
 com/example/miprimerspringboot/repository/CRUDRepository/ReservationCRUDRepository.class
@@ -39,3 +40,21 @@ com/example/miprimerspringboot/services/MessageService.class
 com/example/miprimerspringboot/repository/ScoreRepository.class
 com/example/miprimerspringboot/entidades/Category.class
 com/example/miprimerspringboot/controller/ClientController.class
+=======
+com/example/springbootreto3/entidades/Client.class
+com/example/springbootreto3/controller/ClientController.class
+com/example/springbootreto3/repository/ClientRepository.class
+com/example/springbootreto3/entidades/Score.class
+com/example/springbootreto3/repository/CategoryRepository.class
+com/example/springbootreto3/services/CategoryService.class
+com/example/springbootreto3/controller/CategoryController.class
+com/example/springbootreto3/entidades/Library.class
+com/example/springbootreto3/entidades/Message.class
+com/example/springbootreto3/Reto3.class
+com/example/springbootreto3/entidades/Category.class
+com/example/springbootreto3/repository/CRUDRepository/CategoryCRUDRepository.class
+com/example/springbootreto3/repository/CRUDRepository/ClientCRUDRepository.class
+com/example/springbootreto3/entidades/Reservation.class
+com/example/springbootreto3/services/ClientService.class
+com/example/springbootreto3/controller/MiController.class
+>>>>>>> origin
