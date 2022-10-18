@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.miprimerspringboot.MiPrimerSpringBootApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.495 s - in com.example.miprimerspringboot.MiPrimerSpringBootApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.203 s - in com.example.miprimerspringboot.MiPrimerSpringBootApplicationTests
