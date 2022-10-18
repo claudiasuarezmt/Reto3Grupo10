@@ -6,6 +6,7 @@ import com.example.miprimerspringboot.repository.CRUDRepository.ReservationCRUDR
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,4 +31,13 @@ public class ReservationRepository {
         reservationCRUDRepository.delete(c);
     }
 
+    public List<Reservation> getDatesReport(Date d1, Date d2){
+        return reservationCRUDRepository.findAllByStartDateAfterAndStartDateBefore(d1, d2);
+    }
+    public List<Reservation> getStatusReport(String status){
+        return reservationCRUDRepository.findAllByStatus(status);
+    }
+    public List<Object[]> getTopClients(){
+        return reservationCRUDRepository.getTopClients();
+    }
 }
