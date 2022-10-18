@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
     const url = window.location.href;
@@ -63,4 +64,29 @@ let menu = '<div class="navbar-left">\n' +
     $("#menu").html(menu);
 
 
+
+
 });
+window.addEventListener('load', async function() {
+    $.get("/user",function(data){
+        console.log(data);
+        $("#loginzone").hide();
+        $("#userZone").empty();
+        let k="Bienvenido "+"<br>"+data.name;
+        $("#userZone").append(k);
+        let button="<button onclick='logout()'>Logout</button>";
+        $("#userZone").append(button);
+        $("#userZone").show();
+
+    });
+
+});
+function logout(){
+    $.post("/logout", function() {
+        $("#userZone").html('');
+        $("#loginzone").show();
+        $("#userZone").hide();
+        window.location.href="index.html";
+    })
+    return true;
+}

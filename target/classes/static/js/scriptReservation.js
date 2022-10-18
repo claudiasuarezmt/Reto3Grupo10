@@ -115,7 +115,7 @@ function habilitaDatosReservation(nuTipo) {
                 "<option value=created>Creado</option>" +
                 "<option value=programed>Programado</option>" +
                 "<option value='cancelled'>Cancelado</option>" +
-                "<option value='realized'>Realizado</option>" +
+                "<option value='completed'>Realizado</option>" +
                 "</select></div>";
         }
 
