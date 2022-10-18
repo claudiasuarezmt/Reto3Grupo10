@@ -1,9 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: com.example.miprimerspringboot.MiPrimerSpringBootApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.51 s <<< FAILURE! - in com.example.miprimerspringboot.MiPrimerSpringBootApplicationTests
-contextLoads  Time elapsed: 0.001 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 19.906 s <<< FAILURE! - in com.example.miprimerspringboot.MiPrimerSpringBootApplicationTests
+contextLoads  Time elapsed: 0.003 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.example.miprimerspringboot.MiPrimerSpringBootApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.class] cannot be opened because it does not exist
-Caused by: java.io.FileNotFoundException: class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter.class] cannot be opened because it does not exist
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository' available
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository' available
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository' available
 
