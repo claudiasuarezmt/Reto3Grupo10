@@ -244,8 +244,9 @@ function getDetailReservation(idReserva) {
             $("#idReservation").val(reservation.idReservation);
             $("#iniReservation").val(fechaInicio[0])
             $("#endReservation").val(fechaFin[0]);
-            $("#library").val(reservation.lib.id);
             $("#status").val(reservation.status);
+            $("#library").val(reservation.lib.id);
+
             $("#client").val(reservation.client.idClient);
 
         },
