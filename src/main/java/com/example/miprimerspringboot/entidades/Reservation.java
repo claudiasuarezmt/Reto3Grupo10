@@ -21,7 +21,7 @@ public class Reservation implements Serializable {
     @ManyToOne
     @JoinColumn(name = "libId")
     @JsonIgnoreProperties("reservations")
-    private Library library;
+    private Library lib;
 
     @ManyToOne
     @JoinColumn(name = "clientId")
@@ -65,11 +65,11 @@ public class Reservation implements Serializable {
     }
 
     public Library getLib() {
-        return library;
+        return lib;
     }
 
     public void setLib(Library lib) {
-        this.library = lib;
+        this.lib = lib;
     }
 
     public Client getClient() {
