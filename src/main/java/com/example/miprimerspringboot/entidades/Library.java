@@ -29,8 +29,8 @@ public class Library implements Serializable {
     @JsonIgnoreProperties({"lib","client"})
     private List<Message> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "library")
-    @JsonIgnoreProperties({"library","messages"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","messages"})
     public List<Reservation> reservations;
 
     public Integer getId() {
